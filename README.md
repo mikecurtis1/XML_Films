@@ -180,4 +180,6 @@ head -18 output/films.html
          </div>
 ```
 
+#### View HTML transformation in browser.
+
 > <https://mikecurtis1.github.io/xml-films/output/films.html>
