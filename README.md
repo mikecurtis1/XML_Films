@@ -4,7 +4,7 @@
 
 ### Docker setup
 
-Dockerfile content
+#### Dockerfile content
 
 ```text
 FROM eclipse-temurin:17-jre
@@ -16,13 +16,13 @@ COPY lib /app/lib
 COPY src /app/src  
 ```
 
-### Create Docker image
+#### Create Docker image
 
 ```bash
 docker build -t saxon-toolbox .
 ```
 
-### Create container and open bash shell in one action.
+#### Create container and open bash shell in one action.
 
 ```bash
 docker run -it --rm -v "$(pwd)/output:/app/output" saxon-toolbox bash
