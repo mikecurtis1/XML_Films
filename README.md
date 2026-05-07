@@ -34,6 +34,10 @@ Although experienced Java developers may already be familiar with external JAR d
 
 ## Docker setup
 
+The transformation workflow is executed within a lightweight Docker container using the Eclipse Temurin Java runtime image. Containerization was chosen primarily to avoid introducing Java and Saxon dependencies directly into the host WSL development environment while still preserving a reproducible execution context for the transformation pipeline.
+
+The container mounts the local `output/` directory from the host filesystem so that generated HTML artifacts persist outside the container lifecycle and remain available for static publishing through GitHub Pages.
+
 ### Dockerfile content
 
 ```text
@@ -72,6 +76,8 @@ docker run -it --rm -v "$(pwd)/output:/app/output" saxon-toolbox bash
 ---
 
 ## Examine the XML source code and the output folder prior to running the Saxon transformation.
+
+Once the container is running, the XML source files, XSLT transformation logic, and output directories can be inspected directly within the isolated runtime environment. The following commands demonstrate the project structure prior to executing the Saxon transformation process.
 
 ```bash
 ls -lah src 
@@ -157,6 +163,8 @@ div.film {
 ---
 
 ## Run Saxon tranformation of XML to HTML utilizing the XSLT file.
+
+The transformation itself is performed by invoking the Saxon processor through the Java runtime. The `-s` parameter identifies the XML source document, `-xsl` specifies the XSLT stylesheet, and `-o` defines the generated HTML output artifact.
 
 ```bash
 java -jar Saxon-HE-12.9.jar -s:src/films.xml -xsl:src/films.xsl -o:output/films.html
