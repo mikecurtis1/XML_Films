@@ -2,7 +2,9 @@
 
 ## XSLT with Saxon
 
-Dockerfile
+### Docker setup
+
+Dockerfile content
 
 ```text
 FROM eclipse-temurin:17-jre
@@ -14,13 +16,13 @@ COPY lib /app/lib
 COPY src /app/src  
 ```
 
-Create Docker image
+### Create Docker image
 
 ```bash
 docker build -t saxon-toolbox .
 ```
 
-Create container and open bash shell in one action.
+### Create container and open bash shell in one action.
 
 ```bash
 docker run -it --rm -v "$(pwd)/output:/app/output" saxon-toolbox bash
@@ -39,7 +41,7 @@ docker run -it --rm -v "$(pwd)/output:/app/output" saxon-toolbox bash
 
 ---
 
-Examine the XML source code and the output folder prior to running the Saxon transformation.
+### Examine the XML source code and the output folder prior to running the Saxon transformation.
 
 ```bash
 pwd
@@ -130,7 +132,7 @@ div.film {
 
 ---
 
-Run Saxon tranformation of XML to HTML utilizing the XSLT file.
+### Run Saxon tranformation of XML to HTML utilizing the XSLT file.
 
 ```bash
 java -jar Saxon-HE-12.9.jar -s:src/films.xml -xsl:src/films.xsl -o:output/films.html
@@ -141,6 +143,8 @@ java -jar Saxon-HE-12.9.jar -s:src/films.xml -xsl:src/films.xsl -o:output/films.
 > ```bash
 > java -cp "Saxon-HE-12.9.jar:lib/*" net.sf.saxon.Transform -s:src/films.xml -xsl:src/films.xsl -o:output/films.html
 > ```
+
+### Examine output
 
 ```bash
 ls -lah output
