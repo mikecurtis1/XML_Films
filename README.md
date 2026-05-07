@@ -121,6 +121,14 @@ drwxr-xr-x 6 mikecurtis1 mikecurtis1 4.0K May  7 12:21 ..
 ```bash
 ls -lah src 
 ```
+```text
+total 28K
+drwxr-xr-x 2 mikecurtis1 mikecurtis1 4.0K May  5 19:42 .
+drwxr-xr-x 6 mikecurtis1 mikecurtis1 4.0K May  7 12:21 ..
+-rw-r--r-- 1 mikecurtis1 mikecurtis1 1.7K May  5 19:42 films.dtd
+-rw-r--r-- 1 mikecurtis1 mikecurtis1 4.3K May  5 19:42 films.xml
+-rw-r--r-- 1 mikecurtis1 mikecurtis1 4.5K May  5 19:42 films.xsl
+```
 ```bash
 head src/films.xml
 ```
@@ -161,9 +169,6 @@ head -21 src/films.xsl
       </body>
     </html>
   </xsl:template>
-```
-```bash
-ls -lah output
 ```
 ```bash
 head -28 output/films.css
@@ -217,6 +222,29 @@ java -jar saxon-he-12.9.jar -s:src/films.xml -xsl:src/films.xsl -o:output/films.
 
 ### Examine output
 
+Notice that without our container environment (hostname `daf877f94c93`) the `output/` directory has ownership `ubuntu` indicating the container's host system. This host system directory is available from within the container through the mount option `"$(pwd)/output:/app/output"` in our Docker `run` command used above. This provides persistent storage for the output file after the Docker container shuts down.
+
+```bash
+hostname
+```
+```text
+daf877f94c93
+```
+
+```bash
+ls -lah
+```
+
+```text
+total 5.6M
+drwxr-xr-x 1 root   root   4.0K May  7 16:25 .
+drwxr-xr-x 1 root   root   4.0K May  7 16:25 ..
+drwxr-xr-x 2 root   root   4.0K May  7 16:14 lib
+drwxr-xr-x 2 ubuntu ubuntu 4.0K May  7 16:26 output
+-rw-r--r-- 1 root   root   5.6M Sep 12  2025 saxon-he-12.9.jar
+drwxr-xr-x 2 root   root   4.0K May  7 15:54 src
+```
+
 ```bash
 ls -lah output
 ```
@@ -249,6 +277,25 @@ head -18 output/films.html
                </div>
             <div class="date_entered">Date entered : 5/20/2004</div>
          </div>
+```
+
+After shutting down the container we can confirm our output file persists in the host environement. (Note ownership by `root` which came from the container environment.)
+
+```bash
+hostname
+```
+```text
+LAPTOP
+```
+```bash
+ls -lah output
+```
+```text
+total 24K
+drwxr-xr-x 2 mikecurtis1 mikecurtis1 4.0K May  7 12:26 .
+drwxr-xr-x 6 mikecurtis1 mikecurtis1 4.0K May  7 12:21 ..
+-rw-r--r-- 1 mikecurtis1 mikecurtis1 1.4K May  5 19:29 films.css
+-rw-r--r-- 1 root        root        8.6K May  7 12:26 films.html
 ```
 
 #### View HTML transformation in browser.
