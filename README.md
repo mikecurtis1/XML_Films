@@ -19,6 +19,27 @@ docker build -t saxon-toolbox .
 docker run -it --rm -v "$(pwd)/output:/app/output" saxon-toolbox bash
 ```
 ```bash
+pwd
+```
+```bash
+ls -lah
+```
+```bash
+ls -lah src 
+```
+```bash
+head src/films.xml
+```
+```bash
+head src/films.xsl
+```
+```bash
+ls -lah output
+```
+```bash
+head output/films.css
+```
+```bash
 java -jar Saxon-HE-12.9.jar -s:src/films.xml -xsl:src/films.xsl -o:output/films.html
 ```
 ```bash
@@ -30,6 +51,9 @@ drwxr-xr-x 2 ubuntu ubuntu 4.0K May  5 21:47 .
 drwxr-xr-x 1 root   root   4.0K May  5 21:47 ..
 -rw-r--r-- 1 ubuntu ubuntu 1.4K May  5 17:26 films.css
 -rw-r--r-- 1 root   root   8.6K May  5 21:47 films.html
+```
+```bash
+head output/films.html
 ```
 
 ---
