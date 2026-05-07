@@ -26,10 +26,10 @@ Create container and open bash shell in one action.
 docker run -it --rm -v "$(pwd)/output:/app/output" saxon-toolbox bash
 ```
 
-Or
-
-Create container then open bash shell in separate actions.
-
+> Or
+> 
+> Create container then open bash shell in separate actions.
+> 
 > ```bash
 > docker run -d --name saxon-dev -v "$(pwd)/output:/app/output" saxon-toolbox tail -f /dev/null
 > ```
