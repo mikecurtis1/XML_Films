@@ -36,7 +36,7 @@ div.section {
 div.section div.heading {
     /*text-decoration:underline;*/
     font-weight:bold;
-    color:#eaeaca;
+    color:#09212e;
 }
 
 div.title {
@@ -61,7 +61,7 @@ div.original_title a {
 }
 
 a, a:visited {
-    color:#411;
+    color:#511;
 }
 
 div.date_entered {
