@@ -10,22 +10,11 @@ html {
 
 body {
     font-family:"Lato", Helvetica,sans-serif;
-    background-color:#493C35;
+    background-color:#0b354d;
     max-width:34em;
     margin-left:auto;
     margin-right:auto;
     padding:0 1em 0 1em;
-}
-
-hr {
-    /*color:#B7C68B;
-    background-color:#B7C68B;
-    border:0;
-    height:0.25em;*/
-    background-color:#493C35;
-    border-top:0.25em dotted #eaeaca;
-    border-bottom:0;
-    
 }
 
 div.film {
