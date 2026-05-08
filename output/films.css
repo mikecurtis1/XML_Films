@@ -64,7 +64,7 @@ div.section div.heading {
 div.title {
     border-radius: 0.5em;
     background: #677B87;
-    background: linear-gradient(90deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+    background: linear-gradient(90deg, var(--bg-mid) 0%, var(--bg-dark) 100%);
     color: var(--title-text);
     /*border: solid 0.2em #B3A580;*/
     border: 0;
